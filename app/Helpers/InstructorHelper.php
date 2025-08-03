@@ -11,7 +11,7 @@ class InstructorHelper
 {
     /**
      * Get current authenticated instructor user
-     * Falls back to dummy instructor for development if not authenticated
+     * Only use dummy fallback in development environment
      */
     public static function getCurrentInstructor()
     {
@@ -20,8 +20,13 @@ class InstructorHelper
             return Auth::user();
         }
 
-        // Fallback to dummy instructor for development/testing
-        return self::getDummyInstructor();
+        // Only use dummy instructor in development environment
+        if (app()->environment('local', 'development')) {
+            return self::getDummyInstructor();
+        }
+
+        // In production, throw exception or return null
+        throw new \Exception('No authenticated instructor found');
     }
 
     /**

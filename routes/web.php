@@ -16,6 +16,10 @@ use App\Http\Controllers\Instructor\MessageClassController;
 Route::get('/', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/', [LoginController::class, 'login'])->name('login.post');
 
+// Instructor-specific login (alias to main login for instructor context)
+Route::get('/instructor/login', [LoginController::class, 'showLoginForm'])->name('instructor.login');
+Route::post('/instructor/login', [LoginController::class, 'login'])->name('instructor.login.post');
+
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', function () {
         return view('admin.dashboard.index');
