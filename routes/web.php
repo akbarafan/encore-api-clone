@@ -12,13 +12,9 @@ use App\Http\Controllers\Instructor\MaterialController;
 use App\Http\Controllers\Instructor\MessageActivityController;
 use App\Http\Controllers\Instructor\MessageClassController;
 
-Route::get('/', function () {
-    Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-});
 
-// Authentication Routes
-
-Route::post('/login', [LoginController::class, 'login'])->name('login.post');
+Route::get('/', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/', [LoginController::class, 'login'])->name('login.post');
 
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', function () {
