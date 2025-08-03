@@ -1,0 +1,335 @@
+{
+  "info": {
+    "name": "Message Activities API",
+    "description": "Complete API collection for Message Activities with full CRUD and advanced features",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Basic CRUD",
+      "item": [
+        {
+          "name": "Get All Message Activities",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/message-activities?page=1&per_page=15&instructor_id=&class_id=&activity_date=&date_from=&date_to=&is_active=&is_pinned=&search=&sort_by_pinned=false",
+              "host": ["{{base_url}}"],
+              "path": ["api", "message-activities"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number for pagination"
+                },
+                {
+                  "key": "per_page",
+                  "value": "15",
+                  "description": "Items per page"
+                },
+                {
+                  "key": "instructor_id",
+                  "value": "",
+                  "description": "Filter by instructor ID"
+                },
+                {
+                  "key": "class_id",
+                  "value": "",
+                  "description": "Filter by class ID"
+                },
+                {
+                  "key": "activity_date",
+                  "value": "",
+                  "description": "Filter by activity date (Y-m-d)"
+                },
+                {
+                  "key": "date_from",
+                  "value": "",
+                  "description": "Filter from date (Y-m-d)"
+                },
+                {
+                  "key": "date_to",
+                  "value": "",
+                  "description": "Filter to date (Y-m-d)"
+                },
+                {
+                  "key": "is_active",
+                  "value": "",
+                  "description": "Filter by active status (true/false)"
+                },
+                {
+                  "key": "is_pinned",
+                  "value": "",
+                  "description": "Filter by pinned status (true/false)"
+                },
+                {
+                  "key": "search",
+                  "value": "",
+                  "description": "Search in title or message"
+                },
+                {
+                  "key": "sort_by_pinned",
+                  "value": "false",
+                  "description": "Sort by pinned first (true/false)"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create Message Activity",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"instructor_id\": 1,\n  \"class_id\": 1,\n  \"title\": \"Tugas Programming Laravel\",\n  \"message\": \"Silakan kerjakan tugas Laravel berikut ini. Deadline pengumpulan adalah hari Jumat pukul 23:59. Pastikan untuk mengikuti semua requirements yang telah diberikan.\",\n  \"activity_date\": \"2025-01-28\",\n  \"is_pinned\": true,\n  \"is_active\": true,\n  \"attachments\": [\n    {\n      \"original_name\": \"tugas_laravel.pdf\",\n      \"filename\": \"tugas_laravel_20250128.pdf\",\n      \"path\": \"uploads/attachments/tugas_laravel_20250128.pdf\",\n      \"size\": 2048576,\n      \"mime_type\": \"application/pdf\"\n    },\n    {\n      \"original_name\": \"template_project.zip\",\n      \"filename\": \"template_project_20250128.zip\",\n      \"path\": \"uploads/attachments/template_project_20250128.zip\",\n      \"size\": 5242880,\n      \"mime_type\": \"application/zip\"\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/message-activities",
+              "host": ["{{base_url}}"],
+              "path": ["api", "message-activities"]
+            }
+          }
+        },
+        {
+          "name": "Get Message Activity by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/message-activities/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "message-activities", "1"]
+            }
+          }
+        },
+        {
+          "name": "Update Message Activity",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"instructor_id\": 1,\n  \"class_id\": 1,\n  \"title\": \"Tugas Programming Laravel (Updated)\",\n  \"message\": \"UPDATE: Deadline diperpanjang hingga hari Minggu pukul 23:59. Silakan kerjakan tugas Laravel berikut ini dengan mengikuti semua requirements yang telah diberikan.\",\n  \"activity_date\": \"2025-01-30\",\n  \"is_pinned\": true,\n  \"is_active\": true,\n  \"attachments\": [\n    {\n      \"original_name\": \"tugas_laravel_updated.pdf\",\n      \"filename\": \"tugas_laravel_updated_20250128.pdf\",\n      \"path\": \"uploads/attachments/tugas_laravel_updated_20250128.pdf\",\n      \"size\": 2150000,\n      \"mime_type\": \"application/pdf\"\n    },\n    {\n      \"original_name\": \"additional_resources.zip\",\n      \"filename\": \"additional_resources_20250128.zip\",\n      \"path\": \"uploads/attachments/additional_resources_20250128.zip\",\n      \"size\": 3145728,\n      \"mime_type\": \"application/zip\"\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/message-activities/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "message-activities", "1"]
+            }
+          }
+        },
+        {
+          "name": "Delete Message Activity",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/message-activities/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "message-activities", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Toggle Actions",
+      "item": [
+        {
+          "name": "Toggle Pin Status",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/message-activities/1/toggle-pin",
+              "host": ["{{base_url}}"],
+              "path": ["api", "message-activities", "1", "toggle-pin"]
+            }
+          }
+        },
+        {
+          "name": "Toggle Active Status",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/message-activities/1/toggle-active",
+              "host": ["{{base_url}}"],
+              "path": ["api", "message-activities", "1", "toggle-active"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Filtering Routes",
+      "item": [
+        {
+          "name": "Get Activities by Instructor",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/message-activities/instructor/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "message-activities", "instructor", "1"]
+            }
+          }
+        },
+        {
+          "name": "Get Activities by Class",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/message-activities/class/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "message-activities", "class", "1"]
+            }
+          }
+        },
+        {
+          "name": "Get Today's Activities",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/message-activities/today",
+              "host": ["{{base_url}}"],
+              "path": ["api", "message-activities", "today"]
+            }
+          }
+        },
+        {
+          "name": "Get Pinned Activities",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/message-activities/pinned",
+              "host": ["{{base_url}}"],
+              "path": ["api", "message-activities", "pinned"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "File Operations",
+      "item": [
+        {
+          "name": "Download Attachment",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/message-activities/1/download/0",
+              "host": ["{{base_url}}"],
+              "path": ["api", "message-activities", "1", "download", "0"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Statistics",
+      "item": [
+        {
+          "name": "Get Statistics",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/message-activities/statistics",
+              "host": ["{{base_url}}"],
+              "path": ["api", "message-activities", "statistics"]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8000",
+      "type": "string"
+    }
+  ]
+}
