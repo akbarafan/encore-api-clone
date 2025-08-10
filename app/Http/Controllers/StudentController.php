@@ -35,7 +35,7 @@ class StudentController extends Controller
         $validated = $request->validate([
             'first_name' => 'required|string',
             'last_name' => 'required|string',
-            'gender' => 'required|in:male,female',
+            'gender' => 'required|in:male,female,prefer_not_to_say',
             'medical_condition' => 'nullable|string',
             'one_time_reg_fee' => 'nullable|numeric',
             'email' => 'nullable|email',
@@ -73,7 +73,7 @@ class StudentController extends Controller
         $validated = $request->validate([
             'first_name' => 'string',
             'last_name' => 'string',
-            'gender' => 'in:male,female',
+            'gender' => 'in:male,female,prefer_not_to_say',
             'medical_condition' => 'nullable|string',
             'one_time_reg_fee' => 'nullable|numeric',
             'email' => 'nullable|email',

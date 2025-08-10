@@ -43,7 +43,7 @@ class AuthController extends Controller
                 'students' => 'array',
                 'students.*.first_name' => 'required|string',
                 'students.*.last_name' => 'required|string',
-                'students.*.gender' => 'required|string|in:male,female',
+                'students.*.gender' => 'required|string|in:male,female,prefer_not_to_say',
                 'students.*.medical_condition' => 'nullable|string',
                 'students.*.one_time_reg_fee' => 'nullable|numeric',
             ]);
@@ -183,7 +183,6 @@ class AuthController extends Controller
             return back()->withErrors([
                 'email' => 'The provided credentials do not match our records.',
             ]);
-
         } catch (\Illuminate\Validation\ValidationException $e) {
             Log::error('Validation failed', ['errors' => $e->errors()]);
             return back()->withErrors($e->errors())->withInput();
@@ -200,7 +199,7 @@ class AuthController extends Controller
         Auth::guard('web')->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        
+
         return redirect('/login');
     }
 
